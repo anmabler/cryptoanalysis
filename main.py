@@ -14,8 +14,10 @@ import os
 
 app = Flask(__name__, instance_relative_config=True)
 SECRET_KEY = os.environ.get("SECRET_KEY", None)
+app.config["JWT_SECRET_KEY"] = os.environ.get("JWT_SECRET_KEY", None)
 app.json_encoder = MyEncoder
 jwt = JWTManager(app)
+
 
 #Database
 CONNECTION_STRING = os.environ.get("CONNECTION_STRING")
